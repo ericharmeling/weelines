@@ -1,17 +1,26 @@
 {% extends "base.html" %}
 
 {% block page_content %}
+    <h2>welcome.</h2>
 
-<h1>weelines</h1>
+    <hr>
 
-<form action="/" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="go">
-</form>
+    <p>type in a ticker for a single, wee line:</p>
+    <form action="{% url 'home_page' %}" method="post">
+        {% csrf_token %}
+        {{ ticker_form }}
+        <input type="submit" value="go">
+    </form>
 
-{{ div | safe }}
+    {{ div | safe }}
 
-{{ script | safe }}
+    {{ script | safe }}
 
+    <hr>
+
+    <p>see your <a href="{% url 'portfolio_page' %}">portfolio</a>.</p>
+
+    <hr>
+
+    <p>for multiple, wee lines, <a href="{% url 'login_page' %}">log in</a>.</p>
 {% endblock %}

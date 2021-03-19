@@ -1,0 +1,27 @@
+
+
+{% extends "base.html" %}
+
+{% block page_content %}
+
+
+{% if div %}
+<h2>this is your portfolio:</h2>
+
+{{ div | safe }}
+{{ script | safe }}
+{% else %}
+<h2>open some positions to see your portfolio.</h2>
+{% endif %}
+
+<hr>
+
+<h2>add a position:</h2>
+
+<form action="{% url 'portfolio_page' %}" method="post">
+    {% csrf_token %}
+    {{ position_form }}
+    <input type="submit" value="go">
+</form>
+
+{% endblock %}
